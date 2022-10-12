@@ -6,11 +6,12 @@ public class MaxSumPossible {
         k = 2
         Output : 700*/
 
+    // Elapsed Time in milli seconds: 4
     int findMaxSumPossibleApproach1(int[] inputs, int window) {
         int maxSum = 0;
 
         for (int startPointer = 0, endPointer = window - 1; startPointer <= inputs.length - window; startPointer++, endPointer++) {
-            System.out.println("start pointer: " + inputs[startPointer] + " end pointer: " + inputs[endPointer]);
+//            System.out.println("start pointer: " + inputs[startPointer] + " end pointer: " + inputs[endPointer]);
             int addition = 0;
 
             for (int i = startPointer; i <= endPointer; i++) {
@@ -25,6 +26,7 @@ public class MaxSumPossible {
     }
 
 //Input  : arr[] = {100, 200, 300, 400, 500}
+    //Elapsed Time in milli seconds: 3
     int findMaxSumPossibleApproach2(int[] arr, int k)
     {
         int n = arr.length;
@@ -55,6 +57,7 @@ public class MaxSumPossible {
     }
 
     //Input  : arr[] = {100, 200, 300, 400, 500}
+    // Elapsed Time in milli seconds: 1
     int findMaxSumPossibleApproach3(int[] inputs, int window) {
         int maxSum = 0,windowSum = 0;
 
