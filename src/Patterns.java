@@ -3,12 +3,19 @@ public class Patterns {
         print5432_(6);
     }
     static void print5432_ (int input) {
-//        System.out.println((input+1)/2);
-        for (int i = input; i >= 1; i--) {
-            for (int j = input; j>=1; j--) {
-                if (j == i || j == (input - i) + 1) System.out.print("* \t");
-                else if (j == (input+1)/2 || (input%2 == 0 && j == (input+2)/2)) System.out.print("* \t");
-                else System.out.print(j + "\t");
+        //loop for row
+        for (int row = input; row >= 1; row--) {
+            //loop for column
+            for (int column = input; column>=1; column--) {
+                boolean isLeftDiagnolPosition = column == row;
+                boolean isRightDiagnolPosition = column == (input - row) + 1;
+                boolean centerPosition = column == (input + 1) / 2;
+                boolean isEvenInput = input % 2 == 0;
+                boolean isSecondCenterPosition = column == (input + 2) / 2;
+
+                if (isLeftDiagnolPosition || isRightDiagnolPosition) System.out.print("* \t"); //diagnols star
+                if (centerPosition || (isEvenInput && isSecondCenterPosition)) System.out.print("* \t"); //center position stars
+                else System.out.print(column + "\t"); //for digits
             }
             System.out.println("\n");
         }
