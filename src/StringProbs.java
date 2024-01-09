@@ -1,13 +1,12 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
 
 public class StringProbs {
     public static void main(String[] args) {
 //        System.out.println(reverseString("change"));
 //        System.out.println(subStringCount1("hello my dear, hello baby", "hello"));
 //        System.out.println(customSubString("customSubString", 6,8));
-        System.out.println(Arrays.toString(customSplit("custom SubString program", " ")));
+//        System.out.println(Arrays.toString(customSplit("custom SubString program", " ")));
+        System.out.println(charCount("Hello worllddH"));
     }
 
     static int subStringCount(String sampleString, String subString) {
@@ -15,6 +14,18 @@ public class StringProbs {
         int subStringLength = subString.length();
         int withoutSubstringLength = sampleString.replaceAll(subString, "").length();
         return (sampleStringLength - withoutSubstringLength) / subStringLength;
+    }
+
+
+    static HashMap<Character, Integer> charCount(String sampleString) {
+        HashMap<Character, Integer> charCountMap = new HashMap<>();
+
+        for (int i = 0; i < sampleString.length(); i++) {
+           char ch = sampleString.charAt(i);
+           Integer count = charCountMap.getOrDefault(ch, 0) + 1;
+           charCountMap.put(ch, count);
+        }
+        return charCountMap;
     }
 
     static int subStringCount1(String sampleString, String subString) {
@@ -66,9 +77,7 @@ public class StringProbs {
         for (int i = fromIndex; i <= toIndex; i++) {
             newCharArray[i-fromIndex] = sampleCharArray[i];
         }
-
         return new String(newCharArray);
-
     }
 
 

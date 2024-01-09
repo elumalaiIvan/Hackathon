@@ -1,39 +1,23 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
+public class Weather {
 
-public class LongestSubstring {
+    // Find after how many days the temperature is hitting high ?
+    // for ex: 1st day temp is 58 it has to wait for two more days to hit next highest temp
+    // input: [58, 56, 61, 55, 57, 44, 40, 35, 46]
+    // output: [2, 1, 0, 1, 0, 3, 2, 1, 0 ]
 
     public static void main(String[] args) {
-        longestSubstring("abcbde");
+        findHottestNextDay(new int[] {58, 56, 61, 55, 57, 44, 40, 35, 46});
     }
 
-    private static void longestSubstring(String sampleString) {
-
-        int leftPointer = 0;
-        int rightPointer = 0;
-        StringBuilder tempString = new StringBuilder();
-        int maxLength = 0;
-
-        while (rightPointer < sampleString.length()) {
-
-            char currentCharacter = sampleString.charAt(rightPointer);
-            boolean characterAlreadyNotPresent = tempString.indexOf(String.valueOf(currentCharacter)) == -1;
-
-            if (characterAlreadyNotPresent) {
-                maxLength = Math.max(maxLength, tempString.length());
-                tempString.append(currentCharacter);
-                rightPointer++;
-            } else {
-                tempString.deleteCharAt(leftPointer);
-                leftPointer++;
+    private static void findHottestNextDay(int[] daysWeather) {
+        for (int i = 0; i < daysWeather.length; i++) {
+            for (int j = i; j < daysWeather.length ; j++) {
+                if (daysWeather[j] > daysWeather[i]) {
+                    System.out.print(j - i);
+                    break;
+                }
             }
-
         }
-
-        maxLength = Math.max(maxLength, tempString.length());
-        System.out.println("substring is: " + tempString + " max length is: " + maxLength);
-
     }
 
 

@@ -1,26 +1,39 @@
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class MajorityElement {
+public class LongestSubstring {
 
     public static void main(String[] args) {
-        int[] elements = {1,2,5,5,5,5,5,5,5,1,1};
-        findMajorityElement(elements);
+        longestSubstring("abcbde");
     }
 
-    private static void findMajorityElement(int[] elements) {
-        Map<Integer, Integer> elementCount = HashMap.newHashMap(elements.length);
-        for (int element : elements) {
-         int updatedCount = elementCount.getOrDefault(element, 0) + 1;
-         elementCount.put(element, updatedCount);
-        }
-        Map<Integer, Integer> majorityElementsMap = elementCount.entrySet().stream()
-                .filter(entry -> entry.getValue() >= elements.length / 2)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    private static void longestSubstring(String sampleString) {
 
-        System.out.println(majorityElementsMap);
+        int leftPointer = 0;
+        int rightPointer = 0;
+        StringBuilder tempString = new StringBuilder();
+        int maxLength = 0;
+
+        while (rightPointer < sampleString.length()) {
+
+            char currentCharacter = sampleString.charAt(rightPointer);
+            boolean characterAlreadyNotPresent = tempString.indexOf(String.valueOf(currentCharacter)) == -1;
+
+            if (characterAlreadyNotPresent) {
+                maxLength = Math.max(maxLength, tempString.length());
+                tempString.append(currentCharacter);
+                rightPointer++;
+            } else {
+                tempString.deleteCharAt(leftPointer);
+                leftPointer++;
+            }
+
+        }
+
+        maxLength = Math.max(maxLength, tempString.length());
+        System.out.println("substring is: " + tempString + " max length is: " + maxLength);
+
     }
 
 
