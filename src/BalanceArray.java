@@ -27,7 +27,7 @@ public class BalanceArray {
         if (teamATotalStrength > teamBTotalStrength) {
             adjustTeamStrength(teamA, teamB, teamATotalStrength, teamBTotalStrength);
         } else {
-            adjustTeamStrength(teamA, teamB, teamATotalStrength, teamBTotalStrength);
+            adjustTeamStrength(teamB, teamA, teamBTotalStrength, teamATotalStrength);
         }
     }
 
@@ -70,4 +70,6 @@ public class BalanceArray {
         System.out.println("strong team :" + strongTeam + " total: " + strongTeamTotalStrength);
         System.out.println("weak team " + weakTeam + " total: " + weakTeamTotalStrength);
     }
+
+
 }
