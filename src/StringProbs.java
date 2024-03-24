@@ -6,7 +6,8 @@ public class StringProbs {
 //        System.out.println(subStringCount1("hello my dear, hello baby", "hello"));
 //        System.out.println(customSubString("customSubString", 6,8));
 //        System.out.println(Arrays.toString(customSplit("custom SubString program", " ")));
-        System.out.println(charCount("Hello worllddH"));
+//        System.out.println(charCount("Hello worllddH"));
+        System.out.println(addStrings("56","83"));
     }
 
     static int subStringCount(String sampleString, String subString) {
@@ -15,7 +16,6 @@ public class StringProbs {
         int withoutSubstringLength = sampleString.replaceAll(subString, "").length();
         return (sampleStringLength - withoutSubstringLength) / subStringLength;
     }
-
 
     static HashMap<Character, Integer> charCount(String sampleString) {
         HashMap<Character, Integer> charCountMap = new HashMap<>();
@@ -64,7 +64,6 @@ public class StringProbs {
         return customSubString(sampleString, fromIndex, sampleString.length() - 1);
     }
 
-
     // sample st
     // 123456789
     static String customSubString(String sampleString, int fromIndex, int toIndex) {
@@ -79,8 +78,6 @@ public class StringProbs {
         }
         return new String(newCharArray);
     }
-
-
 
     static String reverseString(String sampleString) {
         // can be done easily like this
@@ -99,6 +96,24 @@ public class StringProbs {
         }
 
         return new String(tempCharArray);
+    }
+
+    // s1 5 6 7   : s2 8 3
+    static String addStrings(String s1, String s2) {
+        StringBuilder result = new StringBuilder();
+        int i = s1.length() - 1, j = s2.length() - 1, carry = 0;
+        while (i >= 0 || j >= 0) {
+            // 0 ascii is 48; 1 is 49 so on ....
+            int firstNumber = i < 0 ? 0 : s1.charAt(i--) - '0';
+            int secondNumber = j < 0 ? 0 : s2.charAt(j--) - '0';
+            int total = firstNumber + secondNumber + carry;
+            carry = total/10;
+            result.append(total%10);
+        }
+        // calculating carry for the last digit should place it as its, as there is no more element to consider
+        if (carry > 0) result.append(carry);
+
+        return result.reverse().toString();
     }
 }
 

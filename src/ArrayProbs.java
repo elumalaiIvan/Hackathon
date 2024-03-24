@@ -4,6 +4,7 @@ public class ArrayProbs {
     public static void main(String[] args) {
 //        System.out.println(Arrays.toString(arrayRotation(3, new int[]{0, 1, 2, 3, 4, 5, 6, 7})));
         System.out.println(Arrays.toString(arrayRotationApproach2(3, new int[]{0, 1, 2, 3, 4, 5, 6, 7})));
+
     }
 
     private static int[] arrayRotation(int k, int[] ints) {
@@ -14,7 +15,6 @@ public class ArrayProbs {
         space O(n)
         time O(n)
          */
-
         int[] rotatedArray = new int[ints.length];
         int rotationPointer = 0;
 
@@ -56,6 +56,20 @@ public class ArrayProbs {
             end--;
         }
 
+    }
+
+
+    public void merge(int[] A, int m, int[] B, int n) {
+        int i = m - 1;
+        int j = n - 1;
+        int k = m + n - 1;
+
+        while (k >= 0) {
+            if (j < 0 || (i >= 0 && A[i] > B[j]))
+                A[k--] = A[i--];
+            else
+                A[k--] = B[j--];
+        }
     }
 
 

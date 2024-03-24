@@ -17,10 +17,11 @@ public class BinarySearch {
 //       }
 
        int[] firstOccurrenceSortedArray = {1, 2, 5, 5, 5, 6, 6, 8, 9, 9};
-       int result = findFirstOccuranceOfNumber(firstOccurrenceSortedArray, 5);
-       int result1 = findLastOccuranceOfNumber(firstOccurrenceSortedArray, 5);
+//       int result = findFirstOccuranceOfNumber(firstOccurrenceSortedArray, 5);
+//       int result1 = findLastOccuranceOfNumber(firstOccurrenceSortedArray, 5);
 
-        System.out.println("first occurrence found " + result1);
+//        System.out.println("first occurrence found " + result1);
+     firstAndLast(firstOccurrenceSortedArray, 5);
 
     }
     // 0 1 2 3 4 5 6
@@ -45,6 +46,31 @@ public class BinarySearch {
         }
         return -1;
     }
+
+    // {1, 2, 5, 6, 6, 6, 6, 8, 9, 9}
+    public static int[] firstAndLast(int[] sortedArray, int target) {
+        int[] result = new int[2];
+        int start = 0;
+        int end = sortedArray.length - 1;
+
+        while (start < end) {
+            int mid = (end + start)/2;
+            if (sortedArray[mid] == target) {
+                result[0] = sortedArray[mid];
+                System.out.println("index " + mid);
+                end = mid - 1;
+//                return result;
+            }
+            else if (sortedArray[mid] < target) {
+                start = mid + 1;
+            } else if (sortedArray[mid] > target) {
+                end = mid - 1;
+            }
+        }
+
+        return result;
+    }
+
 
 //    int nums[] = {1, 2, 5, 5, 5, 6, 6, 8, 9, 9};
     static int findFirstOccuranceOfNumber(int[] sortedArray, int target) {

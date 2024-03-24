@@ -12,3 +12,7 @@ https://javaconceptoftheday.com/java-interview-programs-with-solutions/
 ![img_9.png](img_9.png)
 ![img.png](img.png)
 ![img_1.png](img_1.png)
+
+DS/Algo:
+
+https://www.programcreek.com/2012/11/top-10-algorithms-for-coding-interview/
